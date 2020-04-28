@@ -12,12 +12,12 @@ puts "----------"
 
 # Your code goes here ...
 class Employee
-  after_create :generate_password
+  before_save :generate_password
 
   private
 
   def generate_password
-    self.update(password: [*("A".."Z"), *("a".."z")].sample(8).join)
+    self.password = [*("A".."Z"), *("a".."z")].sample(8).join
   end
 end
 
